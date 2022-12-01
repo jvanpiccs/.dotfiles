@@ -5,10 +5,11 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  use 'ellisonleao/gruvbox.nvim'
-  use 'nvim-lua/plenary.nvim'
-  use 'nvim-telescope/telescope.nvim'
+  use 'wbthomason/packer.nvim' -- packer
+  use 'ellisonleao/gruvbox.nvim' -- theme
+  use 'nvim-lua/plenary.nvim' -- required by telescope
+  use 'nvim-telescope/telescope.nvim' -- finder
+  use 'neovim/nvim-lspconfig' -- neovim lsp
 end)
 
 
