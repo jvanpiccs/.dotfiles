@@ -262,7 +262,7 @@ bar {
 #Keyboard remaps
 
 #Switch language keyboard
-exec setxkbmap -model pc104 -layout us,latam -option grp:alt_shift_toggle
+#exec setxkbmap -model pc104 -layout us,latam -option grp:alt_shift_toggle
 
 #Replace Escape to capslock and disable capslock switch
 exec xmodmap -e "clear lock" #disable caps lock switch
