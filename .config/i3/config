@@ -7,6 +7,7 @@
 #THEME#
 #######
 
+
 # set primary gruvbox colorscheme colors
 set $bg #282828
 set $red #cc241d
@@ -261,10 +262,5 @@ bar {
 
 #Keyboard remaps
 
-#Switch language keyboard
-#exec setxkbmap -model pc104 -layout us,latam -option grp:alt_shift_toggle
-
-#Replace Escape to capslock and disable capslock switch
-exec xmodmap -e "clear lock" #disable caps lock switch
-exec xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
-
+#Toggle language and change caps to escape
+exec setxkbmap -model pc104 -layout us,latam -option grp:alt_shift_toggle,caps:escape
