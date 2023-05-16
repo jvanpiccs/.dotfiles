@@ -97,5 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
+alias bashconfig="nvim ~/.bashrc"
+alias i3config="nvim ~/.config/i3/config"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
