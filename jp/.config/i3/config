@@ -201,13 +201,13 @@ set $darkgray #1d2021
 #start of bar section
 bar {
     position bottom
-    # status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    status_command i3status
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    # status_command i3status
     colors {
         # bar background color
         background $bg
         # text color used for blocks that do not have a color specified.
-        statusline $yellow
+        statusline $white
         # workspaces section            
         #                    border  backgr. text
         focused_workspace    $aqua $aqua $darkgray
@@ -219,20 +219,15 @@ bar {
 #end of bar section
 
 #start of window title bars & borders section
-
-default_border pixel 2
-default_floating_border pixel 2
+hide_edge_borders none
+default_border pixel 1
+default_floating_border pixel 1
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $purple $darkgray
+client.focused          $green $green $darkgray $purple $green
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
 
-# blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-# client.focused          $blue $blue $darkgray $purple $darkgray
-# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-# client.urgent           $red $red $white $red $red
+client.background       $white
