@@ -101,6 +101,13 @@ source $ZSH/oh-my-zsh.sh
 alias vim="exec nvim"
 alias ll="ls -lah"
 alias zshconfig="nvim ~/.zshrc"
+alias zshsource="source ~/.zshrc"
 alias bashconfig="nvim ~/.bashrc"
+alias bashsource="source ~/.zshrc"
 alias i3config="nvim ~/.config/i3/config"
+alias startdocker="systemctl --user start docker-desktop"
+alias stopdocker="systemctl --user stop docker-desktop"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+# keyboard remap
+setxkbmap -option "caps:escape"
