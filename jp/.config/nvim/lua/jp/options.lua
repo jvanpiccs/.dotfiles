@@ -5,9 +5,9 @@ local o = vim.o
 
 -- Numbers
 o.number = true
-o.numberwidth = 6
+o.numberwidth = 4
 o.relativenumber = true
-o.signcolumn = 'yes'
+o.signcolumn = 'no'
 cusorline = true
 
 -- Number of lines cursor pre/post scroll
