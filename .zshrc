@@ -97,10 +97,12 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="nvim ~/.zshrc"
-alias bashconfig="nvim ~/.bashrc"
+alias zshconf="nvim ~/.zshrc"
+alias bashconf="nvim ~/.bashrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias swayconfig="nvim ~/.config/sway/config"
-alias i3config="nvim ~/.config/i3/config"
+alias swayconf="nvim ~/.config/sway/config"
+alias i3conf="nvim ~/.config/i3/config"
 alias audio="exec pavucontrol"
-alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
+alias kittyconf="nvim ~/.config/kitty/kitty.conf"
+alias nvimconf="nvim ~/.config/nvim"
+alias tmuxconf="nvim ~/.tmux.conf"
