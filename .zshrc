@@ -98,7 +98,9 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconf="nvim ~/.zshrc"
+alias zshsource="source ~/.zshrc"
 alias bashconf="nvim ~/.bashrc"
+alias bashsource="source ~/.bashrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias swayconf="nvim ~/.config/sway/config"
 alias i3conf="nvim ~/.config/i3/config"

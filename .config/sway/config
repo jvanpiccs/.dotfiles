@@ -209,6 +209,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #
+# Screenshot copy
+bindsym $mod+x exec grimshot copy area
+#
+
+#
 # Status Bar:
 exec --no-startup-id nm-applet
 exec --no-startup-id nm-tray

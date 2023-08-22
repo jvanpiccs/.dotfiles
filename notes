@@ -1,0 +1,8 @@
+para screen capture o microsoft teams share en wayland
+
+instalar obs version flatpak
+$ flatpak install com.obsproject.Studio.flatpakref
+
+dependencias
+$ sudo apt install pipewire xdg-desktop-portal xdg-desktop-portal-wlr
+
