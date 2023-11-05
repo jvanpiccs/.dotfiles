@@ -9,7 +9,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -98,16 +97,14 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias vim="exec nvim"
+alias nvim="~/Apps/nvim.appimage"
+alias vim="~/Apps/nvim.appimage"
 alias ll="ls -lah"
+alias nvimconfig="nvim ~/.config/nvim"
 alias zshconfig="nvim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias bashconfig="nvim ~/.bashrc"
 alias bashsource="source ~/.zshrc"
 alias i3config="nvim ~/.config/i3/config"
-alias startdocker="systemctl --user start docker-desktop"
-alias stopdocker="systemctl --user stop docker-desktop"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-# keyboard remap
-setxkbmap -option "caps:escape"
+alias docker-start="systemctl --user start docker-desktop"
+alias docker-stop="systemctl --user stop docker-desktop"
