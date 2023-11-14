@@ -151,8 +151,10 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # move workspace to screen
-bindsym $mod+Shift+Ctrl+1 move workspace to number $ws1
-bindsym $mod+Shift+Ctrl+2 move workspace to number $ws2
+bindsym $mod+Shift+Ctrl+Left move workspace to output left
+bindsym $mod+Shift+Ctrl+Up move workspace to output up
+bindsym $mod+Shift+Ctrl+Down move workspace to output down
+bindsym $mod+Shift+Ctrl+Right move workspace to output right
 
 #reload the configuration file
 bindsym $mod+Shift+c reload
