@@ -74,6 +74,9 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+#neovim
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -97,14 +100,17 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias nvim="~/Apps/nvim.appimage"
-alias vim="~/Apps/nvim.appimage"
 alias ll="ls -lah"
-alias nvimconfig="nvim ~/.config/nvim"
-alias zshconfig="nvim ~/.zshrc"
+alias nvimconf="nvim ~/.config/nvim/init.lua"
+alias tmuxconf="nvim ~/.tmux.conf"
+alias zshconf="nvim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
-alias bashconfig="nvim ~/.bashrc"
+alias bashconf="nvim ~/.bashrc"
 alias bashsource="source ~/.zshrc"
-alias i3config="nvim ~/.config/i3/config"
+alias i3conf="nvim ~/.config/i3/config"
 alias docker-start="systemctl --user start docker-desktop"
 alias docker-stop="systemctl --user stop docker-desktop"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
