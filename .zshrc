@@ -4,6 +4,17 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# GOLANG
+export PATH=$PATH:/usr/local/go/bin
+
+# NeoVIM
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -74,9 +85,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-#neovim
-export PATH="$PATH:/opt/nvim-linux64/bin"
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -90,6 +98,7 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 # else
 #   export EDITOR='mvim'
 # fi
+
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -110,7 +119,3 @@ alias bashsource="source ~/.zshrc"
 alias i3conf="nvim ~/.config/i3/config"
 alias docker-start="systemctl --user start docker-desktop"
 alias docker-stop="systemctl --user stop docker-desktop"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
