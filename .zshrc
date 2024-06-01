@@ -15,6 +15,8 @@ export PATH=$PATH:/usr/local/go/bin
 # NeoVIM
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
+# Remaps keys
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -119,3 +121,4 @@ alias bashsource="source ~/.zshrc"
 alias i3conf="nvim ~/.config/i3/config"
 alias docker-start="systemctl --user start docker-desktop"
 alias docker-stop="systemctl --user stop docker-desktop"
+alias ctrl-to-caps="setxkbmap -option 'ctrl:nocaps'"
