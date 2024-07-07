@@ -491,9 +491,14 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
+        powershell_es = {
+          bundle_path = '~/pwsh/PowerShellEditorServices',
+          shell = 'pwsh.exe',
+          require('lspconfig').powershell_es.setup {},
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -620,7 +625,7 @@ require('lazy').setup({
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
           -- {
-          --   'rafamadriz/friendly-snippets',
+          'rafamadriz/friendly-snippets',
           --   config = function()
           --     require('luasnip.loaders.from_vscode').lazy_load()
           --   end,
@@ -711,8 +716,9 @@ require('lazy').setup({
   },
   {
     'rose-pine/neovim',
+    priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'rose-pine'
+      vim.cmd.colorscheme 'rose-pine-main'
     end,
   },
 
