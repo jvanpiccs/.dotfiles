@@ -496,9 +496,10 @@ require('lazy').setup({
         -- rust_analyzer = {},
         powershell_es = {
           bundle_path = '~/pwsh/PowerShellEditorServices',
-          shell = 'powershell.exe',
+          shell = 'pwsh.exe',
           require('lspconfig').powershell_es.setup {},
-        }, -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        },
+        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
