@@ -10,6 +10,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # GOLANG
+# export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/usr/local/go/bin"
 
 # NeoVIM
@@ -127,3 +128,4 @@ alias docker-start="systemctl --user start docker-desktop"
 alias docker-stop="systemctl --user stop docker-desktop"
 alias wake-jp-ubuntu="wakeonlan 18:C0:4D:EB:13:00"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
+alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
