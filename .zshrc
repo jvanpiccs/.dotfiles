@@ -10,12 +10,20 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # GOLANG
-export PATH=$PATH:/usr/local/go/bin
+# export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 # NeoVIM
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
+<<<<<<< HEAD
 # Remaps keys
+=======
+# NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+>>>>>>> develop
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -95,11 +103,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='nvim'
+fi
 
 
 # Compilation flags
@@ -114,11 +122,19 @@ source $ZSH/oh-my-zsh.sh
 alias ll="ls -lah"
 alias nvimconf="nvim ~/.config/nvim/init.lua"
 alias tmuxconf="nvim ~/.tmux.conf"
+alias tmuxsource="tmux source ~/.tmux.conf"
 alias zshconf="nvim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias bashconf="nvim ~/.bashrc"
 alias bashsource="source ~/.zshrc"
+alias alacrittyconf="nvim ~/.config/alacritty/alacritty.toml"
 alias i3conf="nvim ~/.config/i3/config"
 alias docker-start="systemctl --user start docker-desktop"
 alias docker-stop="systemctl --user stop docker-desktop"
+<<<<<<< HEAD
 alias ctrl-to-caps="setxkbmap -option 'ctrl:nocaps'"
+=======
+alias wake-jp-ubuntu="wakeonlan 18:C0:4D:EB:13:00"
+alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
+alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
+>>>>>>> develop
