@@ -136,5 +136,6 @@ alias ctrl-to-caps="setxkbmap -option 'ctrl:nocaps'"
 =======
 alias wake-jp-ubuntu="wakeonlan 18:C0:4D:EB:13:00"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
+alias remapcap-reset="setxkbmap -option 'caps:capslock'"
 alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
 >>>>>>> develop
