@@ -8,8 +8,8 @@ import = [
 TERM = "alacritty"
 
 [font]
-size = 18.0
+size = 20.0
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font"
+family = "FiraCode Nerd Font"
 style = "Regular"
