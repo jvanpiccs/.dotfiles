@@ -135,6 +135,8 @@ vim.opt.rtp:prepend(lazypath)
 --  To update plugins you can run
 --    :Lazy update
 --
+--
+
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup(
   {
@@ -209,7 +211,7 @@ require('lazy').setup(
       },
     },
     -- telescope
-    { -- Fuzzy Finder (files, lsp, etc)
+    { -- Fuzzy Finder ()
       'nvim-telescope/telescope.nvim',
       event = 'VimEnter',
       branch = '0.1.x',
@@ -781,17 +783,35 @@ require('lazy').setup(
         indent = { enable = true, disable = { 'ruby' } },
       },
     },
+    -- codeium
     {
-      'olimorris/codecompanion.nvim',
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-treesitter/nvim-treesitter',
-        'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
-        'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
-        { 'stevearc/dressing.nvim', opts = {} }, -- Optional: Improves `vim.ui.select`
-      },
-      config = true,
+      'Exafunction/codeium.vim',
+      event = 'BufEnter'
     },
+  --   {
+  --     'olimorris/codecompanion.nvim',
+  --     dependencies = {
+  --       'nvim-lua/plenary.nvim',
+  --       'nvim-treesitter/nvim-treesitter',
+  --       'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
+  --       'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
+  --       { 'stevearc/dressing.nvim', opts = {} }, -- Optional: Improves `vim.ui.select`
+  --     },
+  --     config = true,
+  --     opts = {
+  --       strategies = {
+  --         chat = {
+  --           adapter = 'ollama',
+  --         },
+  --         inline = {
+  --           adapter = 'ollama',
+  --         },
+  --         agent = {
+  --           adapter = 'ollama',
+  --         },
+  --       },
+  --     },
+  --   },
   },
   -- nerd font
   {
