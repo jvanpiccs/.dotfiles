@@ -6,3 +6,4 @@ size = 16.0
 live_config_reload = true
 
 import = [ "~/.config/alacritty/catppuccin-mocha.toml" ]
+
