@@ -99,6 +99,19 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- CodeCompanion
+-- vim.keymap.set({ 'n', 'v' }, '<leader>]', ':CodeCompanionActions<CR>')
+-- vim.api.nvim_set_keymap('v', '<leader>ce', '', {
+--   callback = function()
+--     require('codecompanion').prompt 'explain'
+--   end,
+--   noremap = true,
+--   silent = true,
+-- })
+
+-- gen.nvim
+vim.keymap.set({ 'n', 'v' }, '<leader>]', ':Gen<CR>')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -634,12 +647,34 @@ require('lazy').setup(
         --  into multiple repos for maintenance purposes.
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path',
+        { 'tzachar/cmp-ai', dependencies = 'nvim-lua/plenary.nvim' },
+        { 'hrsh7th/nvim-cmp', dependencies = { 'tzachar/cmp-ai' } },
       },
       config = function()
         -- See `:help cmp`
         local cmp = require 'cmp'
         local luasnip = require 'luasnip'
+        local cmp_ai = require 'cmp_ai.config'
         luasnip.config.setup {}
+
+        cmp_ai:setup {
+          max_lines = 100,
+          provider = 'Ollama',
+          provider_options = {
+            model = 'codellama:7b-code',
+            prompt = function(lines_before, lines_after)
+              return lines_before
+            end,
+            suffix = function(lines_after)
+              return lines_after
+            end,
+          },
+          notify = true,
+          notify_callback = function(msg)
+            vim.notify(msg)
+          end,
+          run_on_every_keystroke = true,
+        }
 
         cmp.setup {
           snippet = {
@@ -700,6 +735,18 @@ require('lazy').setup(
 
             -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
             --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+            --
+            -- AI
+            ['<C-x>'] = cmp.mapping(
+              cmp.mapping.complete {
+                config = {
+                  sources = cmp.config.sources {
+                    { name = 'cmp_ai' },
+                  },
+                },
+              },
+              { 'i' }
+            ),
           },
           sources = {
             {
@@ -710,6 +757,7 @@ require('lazy').setup(
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
             { name = 'path' },
+            { name = 'ai' },
           },
         }
       end,
@@ -789,28 +837,35 @@ require('lazy').setup(
     --   event = 'BufEnter',
     -- },
     {
-      'olimorris/codecompanion.nvim',
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-treesitter/nvim-treesitter',
-        'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
-        'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
-        { 'MeanderingProgrammer/render-markdown.nvim', ft = { 'markdown', 'codecompanion' } }, -- Optional: For prettier markdown rendering
-        { 'stevearc/dressing.nvim', opts = {} }, -- Optional: Improves `vim.ui.select`
+      'David-Kunz/gen.nvim',
+      opts = {
+        model = 'llama3.2:1b', -- The default model to use.
+        quit_map = 'q', -- set keymap to close the response window
+        retry_map = '<c-r>', -- set keymap to re-send the current prompt
+        accept_map = '<c-cr>', -- set keymap to replace the previous selection with the last result
+        host = 'localhost', -- The host running the Ollama service.
+        port = '11434', -- The port on which the Ollama service is listening.
+        display_mode = 'float', -- The display mode. Can be "float" or "split" or "horizontal-split".
+        show_prompt = false, -- Shows the prompt submitted to Ollama.
+        show_model = false, -- Displays which model you are using at the beginning of your chat session.
+        no_auto_close = false, -- Never closes the window automatically.
+        file = false, -- Write the payload to a temporary file to keep the command short.
+        hidden = false, -- Hide the generation window (if true, will implicitly set `prompt.replace = true`), requires Neovim >= 0.10
+        init = function(options)
+          pcall(io.popen, 'ollama serve > /dev/null 2>&1 &')
+        end,
+        -- Function to initialize Ollama
+        command = function(options)
+          local body = { model = options.model, stream = true }
+          return 'curl --silent --no-buffer -X POST http://' .. options.host .. ':' .. options.port .. '/api/chat -d $body'
+        end,
+        -- The command for the Ollama service. You can use placeholders $prompt, $model and $body (shellescaped).
+        -- This can also be a command string.
+        -- The executed command must return a JSON object with { response, context }
+        -- (context property is optional).
+        -- list_models = '<omitted lua function>', -- Retrieves a list of model names
+        debug = false, -- Prints errors and the command which is run.
       },
-      -- config = true,
-      config = function()
-        require('codecompanion').setup {
-          strategies = {
-            chat = {
-              adapter = 'ollama',
-            },
-            inline = {
-              adapter = 'ollama',
-            },
-          },
-        }
-      end,
     },
   },
   -- nerd font
