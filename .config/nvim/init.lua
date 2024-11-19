@@ -134,6 +134,8 @@ vim.opt.rtp:prepend(lazypath)
 --
 --  To update plugins you can run
 --    :Lazy update
+--
+--
 
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup(
@@ -630,10 +632,8 @@ require('lazy').setup(
         -- Adds other completion capabilities.
         --  nvim-cmp does not ship with all sources by default. They are split
         --  into multiple repos for maintenance purposes.
-        -- 'hrsh7th/cmp-nvim-lsp',
-        -- 'hrsh7th/cmp-path',
-        -- { 'tzachar/cmp-ai', dependencies = 'nvim-lua/plenary.nvim' },
-        -- { 'hrsh7th/nvim-cmp', dependencies = { 'tzachar/cmp-ai' } },
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-path',
       },
       config = function()
         -- See `:help cmp`
@@ -700,18 +700,6 @@ require('lazy').setup(
 
             -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
             --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-            --
-            -- AI
-            -- ['<C-x>'] = cmp.mapping(
-            --   cmp.mapping.complete {
-            --     config = {
-            --       sources = cmp.config.sources {
-            --         { name = 'cmp_ai' },
-            --       },
-            --     },
-            --   },
-            --   { 'i' }
-            -- ),
           },
           sources = {
             {
@@ -722,7 +710,6 @@ require('lazy').setup(
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
             { name = 'path' },
-            -- { name = 'ai' },
           },
         }
       end,
@@ -801,19 +788,6 @@ require('lazy').setup(
     --   'Exafunction/codeium.vim',
     --   event = 'BufEnter',
     -- },
-    -- codecompanion
-    -- {
-    --   'olimorris/codecompanion.nvim',
-    --   dependencies = {
-    --     'nvim-lua/plenary.nvim',
-    --     'nvim-treesitter/nvim-treesitter',
-    --     'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
-    --     'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
-    --     { 'MeanderingProgrammer/render-markdown.nvim', ft = { 'markdown', 'codecompanion' } }, -- Optional: For prettier markdown rendering
-    --     { 'stevearc/dressing.nvim', opts = {} }, -- Optional: Improves `vim.ui.select`
-    --   },
-    --   config = true,
-    -- },
     -- avante
     {
       'yetone/avante.nvim',
@@ -826,7 +800,6 @@ require('lazy').setup(
         vendors = {
           ---@type AvanteProvider
           ollama = {
-            ['local'] = true,
             endpoint = 'http://localhost:11434/v1',
             -- model = 'codellama:7b-instruct',
             model = 'qwen2.5-coder:14b',
@@ -843,6 +816,7 @@ require('lazy').setup(
                   messages = require('avante.providers').copilot.parse_messages(code_opts), -- you can make your own message, but this is very advanced
                   max_tokens = 2048,
                   stream = true,
+                  temperature = 0,
                 },
               }
             end,
