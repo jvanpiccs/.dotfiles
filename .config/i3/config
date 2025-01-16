@@ -65,7 +65,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -c 000000 --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id nm-tray
 exec --no-startup-id blueman-applet
-# exec --no-startup-id pasystray
+exec --no-startup-id pasystray
 exec_always --no-startup-id setxkbmap -option 'ctrl:nocaps'
 exec_always --no-startup-id setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle
 
