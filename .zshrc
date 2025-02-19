@@ -11,6 +11,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # GOLANG
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/home/jp/go/bin"
 
 # NeoVIM
 export PATH="$PATH:/opt/nvim-linux64/bin"
@@ -123,6 +124,7 @@ alias bashsource="source ~/.zshrc"
 alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias ghosttyconf="nvim ~/.config/ghostty/config"
 alias i3conf="nvim ~/.config/i3/config"
+alias hyprconf="nvim ~/.config/hypr/hyprland.conf"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
 alias remapcap-reset="setxkbmap -option 'caps:capslock'"
 alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
