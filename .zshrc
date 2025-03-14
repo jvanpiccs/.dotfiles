@@ -16,6 +16,10 @@ export PATH="$PATH:/home/jp/go/bin"
 # NeoVIM
 export PATH="$PATH:/opt/nvim-linux64/bin"
 
+# Ollama
+export PATH="$PATH:/usr/local/bin/ollama"
+# ollama models path /usr/local/share/ollama/.ollama
+
 # claro tenant
 export SPFX_SERVE_TENANT_DOMAIN="claroaup.sharepoint.com"
 
