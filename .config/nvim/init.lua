@@ -783,10 +783,10 @@ require('lazy').setup({
     },
   },
   -- codeium
-  -- {
-  --   'Exafunction/codeium.vim',
-  --   event = 'BufEnter',
-  -- },
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter',
+  },
   -- avante
   {
     'yetone/avante.nvim',
@@ -798,6 +798,7 @@ require('lazy').setup({
       ollama = {
         endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
         model = 'deepseek-coder:6.7b',
+        temperature = 0,
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
