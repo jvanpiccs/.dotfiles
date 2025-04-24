@@ -797,8 +797,9 @@ require('lazy').setup({
       provider = 'ollama',
       ollama = {
         endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
-        model = 'deepseek-coder:6.7b',
         temperature = 0,
+        -- model = 'hf.co/bartowski/Qwen2.5-Coder-3B-Instruct-GGUF:Q6_K_L',
+        model = 'hf.co/tensorblock/Viper-Coder-HybridMini-v1.3-GGUF:Q2_K',
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

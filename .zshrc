@@ -1,27 +1,32 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+#
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+#
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+#
 # GOLANG
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/home/jp/go/bin"
-
+#
 # NeoVIM
 export PATH="$PATH:/opt/nvim-linux64/bin"
-
+#
 # Ollama
 export PATH="$PATH:/usr/local/bin/ollama"
 # ollama models path /usr/local/share/ollama/.ollama
+#
+# Tmuxifier
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
 
-# claro tenant
+# Sharepoint Tenant
 export SPFX_SERVE_TENANT_DOMAIN="claroaup.sharepoint.com"
+
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -132,3 +137,6 @@ alias hyprconf="nvim ~/.config/hypr/hyprland.conf"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
 alias remapcap-reset="setxkbmap -option 'caps:capslock'"
 alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
+alias day="redshift -o -P -O 5600"
+alias seminight="redshift -o -P -O 4000"
+alias night="redshift -o -P -O 3500"
