@@ -788,6 +788,10 @@ require('lazy').setup({
     event = 'BufEnter',
   },
   -- avante
+  -- make from source
+  -- $ cd ~/.local/share/nvim/lazy/avante.nvim
+  -- $ make clean
+  -- $ make
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',

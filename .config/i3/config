@@ -233,7 +233,7 @@ exec --no-startup-id "setxkbmap -model pc105 -layout us,latam -option grp:alt_sp
 exec --no-startup-id xsetroot -solid "#000000"
 
 #start of window title bars & borders section
-hide_edge_borders none
+hide_edge_borders smart
 default_border pixel 1
 default_floating_border pixel 1
 
