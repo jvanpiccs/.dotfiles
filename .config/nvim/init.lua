@@ -82,6 +82,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Escape to jj
+vim.keymap.set('i', 'jk', '<Esc>', { silent = true })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -493,6 +496,7 @@ require('lazy').setup({
         -- Some languages (like typescript) have entire language plugins that can be useful:
         -- https://github.com/pmizio/typescript-tools.nvim
         --
+        -- tsserver = {},
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {
         --   settings = {
@@ -782,16 +786,9 @@ require('lazy').setup({
       indent = { enable = true, disable = { 'ruby' } },
     },
   },
-  -- codeium
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
-  },
   -- avante
   -- make from source
-  -- $ cd ~/.local/share/nvim/lazy/avante.nvim
-  -- $ make clean
-  -- $ make
+  -- $ cd ~/.local/share/nvim/lazy/avante.nvim && make clean && make
   {
     'yetone/avante.nvim',
     event = 'VeryLazy',
@@ -801,14 +798,12 @@ require('lazy').setup({
       provider = 'ollama',
       ollama = {
         endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
-        temperature = 0,
-        -- model = 'hf.co/bartowski/Qwen2.5-Coder-3B-Instruct-GGUF:Q6_K_L',
-        model = 'hf.co/tensorblock/Viper-Coder-HybridMini-v1.3-GGUF:Q2_K',
+        model = 'qwen2.5-coder:1.5b',
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = 'make BUILD_FROM_SOURCE=true',
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+    -- build = "" -- for windows
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'stevearc/dressing.nvim',

@@ -26,7 +26,9 @@ eval "$(tmuxifier init -)"
 
 # Sharepoint Tenant
 export SPFX_SERVE_TENANT_DOMAIN="claroaup.sharepoint.com"
-
+#pwsh
+export CLIENT_ID="e89282bd-6ee9-4657-97f6-ac8bb5cf3f5"
+export TENANT_ID="05bfea77-f19c-471d-afa2-0c9093af8bd"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
