@@ -27,7 +27,6 @@ eval "$(tmuxifier init -)"
 # Sharepoint Tenant
 export SPFX_SERVE_TENANT_DOMAIN="claroaup.sharepoint.com"
 
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -123,6 +122,7 @@ fi
 #
 # Example aliases
 alias ll="ls -lah"
+alias nvim="nvim"
 alias nvimconf="nvim ~/.config/nvim/init.lua"
 alias tmuxconf="nvim ~/.tmux.conf"
 alias tmuxsource="tmux source ~/.tmux.conf"
@@ -130,13 +130,15 @@ alias zshconf="nvim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias bashconf="nvim ~/.bashrc"
 alias bashsource="source ~/.zshrc"
-alias kittyconf="nvim ~/.config/kitty/kitty.conf"
 alias ghosttyconf="nvim ~/.config/ghostty/config"
 alias i3conf="nvim ~/.config/i3/config"
-alias hyprconf="nvim ~/.config/hypr/hyprland.conf"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
 alias remapcap-reset="setxkbmap -option 'caps:capslock'"
 alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
 alias day="redshift -o -P -O 5600"
-alias seminight="redshift -o -P -O 4000"
+alias seminight="redshift -o -P -O 5000"
 alias night="redshift -o -P -O 3500"
+alias vpnConnect="forticlient vpn connect Claro -p"
+alias vpnDisconnect="forticlient vpn disconnect Claro"
+alias vpnStatus="forticlient vpn status"
+alias flushDNS="sudo service networking restart"

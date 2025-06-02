@@ -79,6 +79,10 @@ vim.opt.scrolloff = 10
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- add map to escape in insert_mode
+vim.keymap.set('i', 'jk', '<Esc>')
+vim.keymap.set('i', 'jj', '<Esc>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
@@ -494,6 +498,7 @@ require('lazy').setup({
         -- https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
+        -- tsserver = {},
         -- tsserver = {
         --   settings = {
         --     tsserver_file_preferences = {
@@ -782,72 +787,120 @@ require('lazy').setup({
       indent = { enable = true, disable = { 'ruby' } },
     },
   },
-  -- codeium
+  -- codecompanion
   {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter',
+    'olimorris/codecompanion.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {
+      strategies = {
+        chat = {
+          adapter = 'qwen',
+        },
+        inline = {
+          adapter = 'qwen',
+        },
+        cmd = {
+          adapter = 'qwen',
+        },
+      },
+      opts = {
+        log_level = 'DEBUG',
+      },
+      adapters = {
+        qwen = function()
+          return require('codecompanion.adapters').extend('ollama', {
+            name = 'qwen',
+            schema = {
+              model = {
+                default = 'qwen2.5-coder:7b',
+                temperature = 0,
+              },
+            },
+          })
+        end,
+        deepseek = function()
+          return require('codecompanion.adapters').extend('ollama', {
+            name = 'deepseek',
+            schema = {
+              model = {
+                default = 'deepseek-r1:14b',
+                temperature = 0,
+              },
+            },
+          })
+        end,
+      },
+    },
   },
+  -- codeium
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter',
+  -- },
   -- avante
   -- make from source
   -- $ cd ~/.local/share/nvim/lazy/avante.nvim
   -- $ make clean
   -- $ make
-  {
-    'yetone/avante.nvim',
-    event = 'VeryLazy',
-    version = false, -- Never set this value to "*"! Never!
-    opts = {
-      -- add any opts here
-      provider = 'ollama',
-      ollama = {
-        endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
-        temperature = 0,
-        -- model = 'hf.co/bartowski/Qwen2.5-Coder-3B-Instruct-GGUF:Q6_K_L',
-        model = 'hf.co/tensorblock/Viper-Coder-HybridMini-v1.3-GGUF:Q2_K',
-      },
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = 'make BUILD_FROM_SOURCE=true',
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      'stevearc/dressing.nvim',
-      'nvim-lua/plenary.nvim',
-      'MunifTanjim/nui.nvim',
-      --- The below dependencies are optional,
-      'echasnovski/mini.pick', -- for file_selector provider mini.pick
-      'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-      'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
-      'ibhagwan/fzf-lua', -- for file_selector provider fzf
-      'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
-      'zbirenbaum/copilot.lua', -- for providers='copilot'
-      {
-        -- support for image pasting
-        'HakonHarnes/img-clip.nvim',
-        event = 'VeryLazy',
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-            -- required for Windows users
-            use_absolute_path = true,
-          },
-        },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { 'markdown', 'Avante' },
-        },
-        ft = { 'markdown', 'Avante' },
-      },
-    },
-  },
+  -- {
+  --   'yetone/avante.nvim',
+  --   event = 'VeryLazy',
+  --   version = false, -- Never set this value to "*"! Never!
+  --   opts = {
+  --     -- add any opts here
+  --     provider = 'ollama',
+  --     ollama = {
+  --       endpoint = 'http://127.0.0.1:11434', -- Note that there is no /v1 at the end.
+  --       temperature = 0,
+  --       -- model = 'qwen2.5-coder:7b',
+  --       model = 'qwen2.5-coder:1.5b',
+  --     },
+  --   },
+  --   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  --   build = 'make BUILD_FROM_SOURCE=true',
+  --   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  --   dependencies = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --     'stevearc/dressing.nvim',
+  --     'nvim-lua/plenary.nvim',
+  --     'MunifTanjim/nui.nvim',
+  --     --- The below dependencies are optional,
+  --     'echasnovski/mini.pick', -- for file_selector provider mini.pick
+  --     'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
+  --     'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
+  --     'ibhagwan/fzf-lua', -- for file_selector provider fzf
+  --     'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
+  --     'zbirenbaum/copilot.lua', -- for providers='copilot'
+  --     {
+  --       -- support for image pasting
+  --       'HakonHarnes/img-clip.nvim',
+  --       event = 'VeryLazy',
+  --       opts = {
+  --         -- recommended settings
+  --         default = {
+  --           embed_image_as_base64 = false,
+  --           prompt_for_file_name = false,
+  --           drag_and_drop = {
+  --             insert_mode = true,
+  --           },
+  --           -- required for Windows users
+  --           use_absolute_path = true,
+  --         },
+  --       },
+  --     },
+  --     {
+  --       -- Make sure to set this up properly if you have lazy=true
+  --       'MeanderingProgrammer/render-markdown.nvim',
+  --       opts = {
+  --         file_types = { 'markdown', 'Avante' },
+  --       },
+  --       ft = { 'markdown', 'Avante' },
+  --     },
+  --   },
+  -- },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
