@@ -30,6 +30,12 @@ export SPFX_SERVE_TENANT_DOMAIN="claroaup.sharepoint.com"
 export CLIENT_ID="e89282bd-6ee9-4657-97f6-ac8bb5cf3f5"
 export TENANT_ID="05bfea77-f19c-471d-afa2-0c9093af8bd"
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+. "$HOME/.cargo/env"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -142,3 +148,10 @@ alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_
 alias day="redshift -o -P -O 5600"
 alias seminight="redshift -o -P -O 4000"
 alias night="redshift -o -P -O 3500"
+alias vpnStatus="forticlient vpn status"
+alias vpnConnect="forticlient vpn connect Claro"
+alias vpnDisconnect="forticlient vpn disconnect"
+
+# proxy
+export http_proxy="http://proxy-corp.ctimovil.net:8083"
+export https_proxy="http://proxy-corp.ctimovil.net:8083"
