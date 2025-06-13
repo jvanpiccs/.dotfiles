@@ -36,6 +36,10 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 . "$HOME/.cargo/env"
 
+# NVM
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -145,9 +149,12 @@ alias hyprconf="nvim ~/.config/hypr/hyprland.conf"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
 alias remapcap-reset="setxkbmap -option 'caps:capslock'"
 alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
+alias ctrl-to-caps="setxkbmap -option 'ctrl:nocaps'"
 alias day="redshift -o -P -O 5600"
 alias seminight="redshift -o -P -O 4000"
 alias night="redshift -o -P -O 3500"
 alias vpnStatus="forticlient vpn status"
 alias vpnConnect="forticlient vpn connect Claro"
 alias vpnDisconnect="forticlient vpn disconnect"
+alias docker-start="systemctl --user start docker-desktop"
+alias docker-stop="systemctl --user stop docker-desktop"
