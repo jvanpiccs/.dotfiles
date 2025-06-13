@@ -1,29 +1,44 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+#
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
+#
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
+#
 # GOLANG
-# export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/usr/local/go/bin"
-
+export PATH="$PATH:/home/jp/go/bin"
+#
 # NeoVIM
 export PATH="$PATH:/opt/nvim-linux64/bin"
+#
+# Ollama
+export PATH="$PATH:/usr/local/bin/ollama"
+# ollama models path /usr/local/share/ollama/.ollama
+#
+# Tmuxifier
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
 
-<<<<<<< HEAD
-# Remaps keys
-=======
+# Sharepoint Tenant
+export SPFX_SERVE_TENANT_DOMAIN="claroaup.sharepoint.com"
+#pwsh
+export CLIENT_ID="e89282bd-6ee9-4657-97f6-ac8bb5cf3f5"
+export TENANT_ID="05bfea77-f19c-471d-afa2-0c9093af8bd"
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+. "$HOME/.cargo/env"
+
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
->>>>>>> develop
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,15 +142,19 @@ alias zshconf="nvim ~/.zshrc"
 alias zshsource="source ~/.zshrc"
 alias bashconf="nvim ~/.bashrc"
 alias bashsource="source ~/.zshrc"
-alias alacrittyconf="nvim ~/.config/alacritty/alacritty.toml"
+alias kittyconf="nvim ~/.config/kitty/kitty.conf"
+alias ghosttyconf="nvim ~/.config/ghostty/config"
 alias i3conf="nvim ~/.config/i3/config"
-alias docker-start="systemctl --user start docker-desktop"
-alias docker-stop="systemctl --user stop docker-desktop"
-<<<<<<< HEAD
-alias ctrl-to-caps="setxkbmap -option 'ctrl:nocaps'"
-=======
-alias wake-jp-ubuntu="wakeonlan 18:C0:4D:EB:13:00"
+alias hyprconf="nvim ~/.config/hypr/hyprland.conf"
 alias remapcaps="setxkbmap -option 'ctrl:nocaps'"
 alias remapcap-reset="setxkbmap -option 'caps:capslock'"
 alias togglelang="setxkbmap -model pc105 -layout us,latam -option grp:alt_space_toggle"
->>>>>>> develop
+alias ctrl-to-caps="setxkbmap -option 'ctrl:nocaps'"
+alias day="redshift -o -P -O 5600"
+alias seminight="redshift -o -P -O 4000"
+alias night="redshift -o -P -O 3500"
+alias vpnStatus="forticlient vpn status"
+alias vpnConnect="forticlient vpn connect Claro"
+alias vpnDisconnect="forticlient vpn disconnect"
+alias docker-start="systemctl --user start docker-desktop"
+alias docker-stop="systemctl --user stop docker-desktop"

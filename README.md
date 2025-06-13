@@ -4,13 +4,13 @@
 sudo rm -rf ~/.zshrc
 sudo rm -rf ~/.tmux.conf
 sudo rm -rf ~/.config/i3
-sudo rm -rf ~/.config/alacritty
 sudo rm -rf ~/.config/nvim
+sudo rm -rf ~/.config/ghostty
 
 # symlink dotfiles
 sudo ln -s ~/.dotfiles/.zshrc ~/.zshrc
 sudo ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 sudo ln -s ~/.dotfiles/.config/i3 ~/.config/i3
-sudo ln -s ~/.dotfiles/.config/alacritty ~/.config/alacritty
+sudo ln -s ~/.dotfiles/.config/kitty ~/.config/ghostty
 sudo ln -s ~/.dotfiles/.config/nvim ~/.config/nvim
 ```
