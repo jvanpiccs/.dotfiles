@@ -151,7 +151,3 @@ alias night="redshift -o -P -O 3500"
 alias vpnStatus="forticlient vpn status"
 alias vpnConnect="forticlient vpn connect Claro"
 alias vpnDisconnect="forticlient vpn disconnect"
-
-# proxy
-export http_proxy="http://proxy-corp.ctimovil.net:8083"
-export https_proxy="http://proxy-corp.ctimovil.net:8083"

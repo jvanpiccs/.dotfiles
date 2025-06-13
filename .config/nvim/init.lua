@@ -145,6 +145,9 @@ require('lazy').setup({
   -- tpope
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
+  -- copilot
+  'github/copilot.vim',
+
   -- gitqsings
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -723,8 +726,8 @@ require('lazy').setup({
     name = 'catppuccin',
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'catppuccin-mocha'
-      -- vim.cmd.colorscheme 'catppuccin-latte'
+      -- vim.cmd.colorscheme 'catppuccin-mocha'
+      vim.cmd.colorscheme 'catppuccin-latte'
     end,
   },
 
@@ -787,11 +790,6 @@ require('lazy').setup({
       indent = { enable = true, disable = { 'ruby' } },
     },
   },
-  -- windsurf
-  -- {
-  --   'Exafunction/windsurf.vim',
-  --   event = 'BufEnter',
-  -- },
   -- code companion
   {
     'olimorris/codecompanion.nvim',
@@ -802,13 +800,13 @@ require('lazy').setup({
     opts = {
       strategies = {
         chat = {
-          adapter = 'qwen',
+          adapter = 'copilot',
         },
         inline = {
-          adapter = 'qwen',
+          adapter = 'copilot',
         },
         cmd = {
-          adapter = 'qwen',
+          adapter = 'copilot',
         },
       },
       opts = {
@@ -821,7 +819,6 @@ require('lazy').setup({
             schema = {
               model = {
                 default = 'qwen2.5-coder:3b',
-                -- default = 'qwen2.5-coder:7b',
                 temperature = 0.5,
               },
             },
